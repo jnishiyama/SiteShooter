@@ -1,0 +1,19 @@
+{
+  "name": "siteShot",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "3.x",
+	"redis": "0.8.2",
+	"jade": "latest",
+	"phantom-proxy": "0.1.2",
+	"emailjs": "*",
+	"phantom": "0.3.5",
+	"socket.io": "0.9.11",
+	"formidable": "latest"
+	
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
+}
