@@ -8,20 +8,48 @@ html
     link(rel='stylesheet', href='/libs/bootstrap/css/bootstrap-responsive.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    div.container#content-area
-      form(action="/save", method="post")
+    div
+      form.pager.well(action="/save", method="post")
         p
-          label Enter a new site to shoot
-          input(type='text', plceholder='new site', name='site-name')
+          label(style="font-size: 36px") Enter a new site to shoot
+          p
+            input.input-xxlarge(type='text', plceholder='new site', name='site-name')
+            span.help-block Enter in site name, not web address. For instance, "google", not "google.com"
         p
-          input(type='submit', value='Save')
-      ul
-        each site in sites
-          form(action="/delete", method="post")
-            li #{site.text}
-              img(src="/libs/bootstrap/img/#{site.text}.jpg")
-              input(type='hidden', value='#{site.text}', name='oldSite-name')
-            input(type='submit', value='Delete')
-    
-    
+          input.btn.btn-success.btn-large.span4#send-btn(type='submit', value='Save')
+    div.container 
+      div.tabbable.tabs-left
+        .container-fluid
+          .row-fluid
+            .span2
+              ul.nav.nav-tabs
+                each site, j in sites
+                  case j
+                    when 0
+                      li.active
+                        a(href="#site-#{site.id}", data-toggle="tab", style="font-size:24px;") #{site.text}
+                    default    
+                      li
+                        a(href="#site-#{site.id}", data-toggle="tab", style="font-size:24px;") #{site.text}
+            .span10
+              div.tab-content
+                each site, i in sites
+                  //h1= count
+                  case i
+                    when 0  
+                      div.tab-pane.active(id="site-#{site.id}")
+                        p </br>
+                          img.well(src="/libs/bootstrap/img/#{site.text}.jpg")
+                        form(action="/delete", method="post")
+                          input(type='hidden', value='#{site.text}', name='oldSite-name')
+                          input.btn.btn-danger.btn-large.span4#send-btn(type='submit', value='Delete #{site.text} from list')
+                      //count = 1
+                    default
+                      div.tab-pane(id="site-#{site.id}")
+                        p </br>
+                          img.well(src="/libs/bootstrap/img/#{site.text}.jpg")
+                        form(action="/delete", method="post")
+                          input(type='hidden', value='#{site.text}', name='oldSite-name')
+                          input.btn.btn-danger.btn-large.span4#send-btn(type='submit', value='Delete #{site.text} from list')
+              //count = 1
         

@@ -46,7 +46,7 @@ function getSites(){
   				phantom = proxy.phantom;
 	  			var siteName= sites[i];
 				page.viewportSize={width: width, height: height};
-	  			page.open("http://www."+siteName+".com", function(){
+	  			page.open("http://www."+siteName, function(){
 	      			console.log('body tag present');
 	      				page.render("public/libs/bootstrap/img/"+siteName+".jpg", function(){
 	        			console.log('saved my picture!');

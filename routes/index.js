@@ -11,7 +11,8 @@ exports.index = function(req, res){
 	client.LRANGE("sList", 0, -1, function(err, objs){
 		for (var k in objs){
 			var newSite = {
-				text: objs[k]
+				text: objs[k],
+				id: objs[k].replace(".", "")
 			};
 			sites.push(newSite);
 		}
