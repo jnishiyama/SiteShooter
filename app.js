@@ -32,7 +32,7 @@ app.get('/', routes.index);
 app.post('/save', routes.saveList);
 app.post('/delete', routes.deleteItem);
 
-
-app.listen(3000, function(){
+var port = process.env.PORT || 5000;
+app.listen(port, function(){
   console.log("express-bootstrap app running");
 });
