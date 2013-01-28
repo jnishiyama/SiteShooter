@@ -3,7 +3,7 @@
  * GET home page.
  */
 
-var redis = require("redis"),
+var redis = require('redis-url').connect(process.env.REDISTOGO_URL),
 	client = redis.createClient();
 
 exports.index = function(req, res){

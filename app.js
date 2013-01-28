@@ -1,7 +1,6 @@
 var express = require('express'),
     routes = require('./routes'),
-    redis = require('redis');
-    //engines = require('consolidate');
+    redis = require('redis-url').connect(process.env.REDISTOGO_URL);  
     
 var app = module.exports = express();
 

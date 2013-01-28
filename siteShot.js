@@ -1,4 +1,5 @@
-var redis = require("redis"), client= redis.createClient();
+var redis = require('redis-url').connect(process.env.REDISTOGO_URL),
+    client= redis.createClient();
 var i=0;
 var check=true;
 var sites=[]
